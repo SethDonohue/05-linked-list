@@ -1,7 +1,6 @@
 'use strict';
 
-//vinicio - This is capital L because it's a class
-const LinkedList = require('../lib/linked-list');
+const LinkedList = require('../model/linked-list');
 
 describe('linked-list.js',() => {
   test('A list with a single element, should have a value and no next', () => {
@@ -16,6 +15,22 @@ describe('linked-list.js',() => {
     result.append(new LinkedList(10));
 
     expect(result.value).toEqual(5);
+    expect(result.next.value).toEqual(4);
+    expect(result.next.next.value).toEqual(10);
+    expect(result.next.next.next).toEqual(null);
+  });
+
+  test('find should find the vlaue searched for', () => {
+    let result = new LinkedList(5);
+    result.append(new LinkedList(4));
+    result.append(new LinkedList(10));
+
+    result.find(10);
+    console.log(result);
+    // console.log(result.next);
+    // console.log(result.next.next);
+
+    expect(result.find(10)).toEqual({value : 10, next : null});
     expect(result.next.value).toEqual(4);
     expect(result.next.next.value).toEqual(10);
     expect(result.next.next.next).toEqual(null);

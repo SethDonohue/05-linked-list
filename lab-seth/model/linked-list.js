@@ -1,8 +1,5 @@
 'use strict';
 
-function LinkedList(){}
-//function LinkedList...
-//vinicio - classes are not hoisted :p
 class LinkedList{
   //new LinkedList()...
   constructor(value){
@@ -25,7 +22,11 @@ class LinkedList{
 
   //TODO : Homework
   find(value){
-
+    console.log(this);
+    if(this.value === value) return this;
+    else{
+      this.next.find(value);
+    }
   }
 
   //vinicio - remove has( intentionally n_o), a bug. Can you find it?
