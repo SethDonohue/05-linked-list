@@ -10,38 +10,22 @@ class LinkedList{
     if(!(node instanceof LinkedList))
       throw new TypeError('<node> should be an instance of LinkedList');
     
-    if(!this.next)
-      this.next = node;
-    else
-      this.next.append(node);
+    (!this.next) ? (this.next = node): this.next.append(node);
     
     return this;
   }
 
+
   find(value){
-    if(this.value === value){
-      return this;
-    }else if(!this.next){
-      return null;
-    }else{
-      this.next.find(value);
-    }
+    return (this.value === value) ? this : (!this.next) ? null : this.next.find(value);
   }
 
   remove(node){
     if(!(node instanceof LinkedList))
       throw new TypeError('<node> should be an instance of LinkedList');
     
-    if(!this.next)
-      return this;
+    (!this.next) ? this: (this === node) ? this.next = this.next.next: (this.next === node) ? this.next = this.next.next: this.next.remove(node);
 
-    if(this === node){
-      this.next = this.next.next;
-    }else if(this.next === node){
-      this.next = this.next.next;
-    } else {
-      this.next.remove(node);
-    }
     return this;
   }
 }
