@@ -1,31 +1,61 @@
-![cf](https://i.imgur.com/7v5ASc8.png) Lab 5: Linked List
-======
+# Lab 5 : Linked List
 
-## Submission Instructions
-* Work in a fork of this repository
-* Work in a branch on your fork
-* Write all of your code in a directory named `lab-` + `<your name>` **e.g.** `lab-susan`
-* Open a pull request to this repository
-* Submit on canvas a question and observation, how long you spent, and a link to your pull request
+## Seth Donohue
 
-## Configuration 
-Configure the root of your repository with the following files and directories. Thoughtfully name and organize any additional configuration or module files.
-* **README.md** - contains documentation
-* **.gitignore** - contains a [robust](http://gitignore.io) `.gitignore` file 
-* **.eslintrc.json** - contains the course linter configuration
-* **.eslintignore** - contains the course linter ignore configuration
-* **package.json** - contains npm package config
-* **model/** - contains module definitions
-* **\_\_test\_\_/** - contains test modules
+## Functions
 
-## Feature Tasks  
-#### Doubly Linked List
-* Given the LinkedList class presented during lecture, add a`find(value)` method that returns a node (if present) that corresponds to a particular value.
-  * You can assume that the linked list won't have duplicate values
+### Linkedlist(value)
+  This is a basic constructor class that creates a linked list with a value property and a next property.
+  Arity: 1, value
+  Data Type: numbers only
 
-## Tests
-Unit test each method of your class. 
+  ```
+  class LinkedList{
+  constructor(value){
+    this.value = value;
+    this.next = null;
+  }
+  ```
 
-## Documentation
-In your README.md describe the exported values of each module you have defined. Every function description should include it's arity (expected number of parameters), the expected data for each parameter (data-type and limitations), and it's behavior (for both valid and invalid use). Feel free to write any additional information in your README.md.
 
+### append(node)
+  This is a basic append method that allows us to add a new Linked List to the end of an existing Linked List. If the given node is not an instance of LinkedList then it will throw and error saying so.
+  Arity: 1, node
+  Data Type: new Linked List nodes only created from the constructor class.
+
+  ```
+    append(node){
+    if(!(node instanceof LinkedList))
+      throw new TypeError('<node> should be an instance of LinkedList');
+    
+    (!this.next) ? (this.next = node): this.next.append(node);
+    
+    return this;
+  }
+  ```
+### find(value)
+  This is a basic find method that allows us to search for a given value in the Linked List. If the given node is not an instance of LinkedList then it will throw and error saying so. If the value is not found find will return null.
+  Arity: 1, value
+  Data Type: number.
+
+  ```
+
+  find(value){
+    return (this.value === value) ? this : (!this.next) ? null : this.next.find(value);
+  }
+```
+### remove(node)
+  This is a basic remove method that allows us to remove a node of an existing Linked List. If the given node is not an instance of LinkedList then it will throw and error saying so.
+  Arity: 1, node
+  Data Type: new Linked List nodes only created from the constructor class.
+
+```
+  remove(node){
+    if(!(node instanceof LinkedList))
+      throw new TypeError('<node> should be an instance of LinkedList');
+    
+    (!this.next) ? this: (this === node) ? this.next = this.next.next: (this.next === node) ? this.next = this.next.next: this.next.remove(node);
+
+    return this;
+  }
+  ```
