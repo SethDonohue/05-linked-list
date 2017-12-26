@@ -4,7 +4,12 @@
   "description": "![cf](https://i.imgur.com/7v5ASc8.png) Lab 5: Linked List ======",
   "main": "index.js",
   "scripts": {
-    "test": "jest -i --coverage"
+    "test": "jest -i --coverage",
+    "lint": "eslint ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SethDonohue/05-linked-list.git"
   },
   "keywords": [],
   "author": "Seth Donohue",

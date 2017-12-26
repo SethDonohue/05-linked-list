@@ -20,17 +20,12 @@ describe('linked-list.js',() => {
     expect(result.next.next.next).toEqual(null);
   });
 
-  test('find should find the vlaue searched for', () => {
+  test('find should find the value searched for', () => {
     let result = new LinkedList(5);
     result.append(new LinkedList(4));
     result.append(new LinkedList(10));
 
-    result.find(10);
-    console.log(result);
-    // console.log(result.next);
-    // console.log(result.next.next);
-
-    expect(result.find(10)).toEqual({value : 10, next : null});
+    expect(result.find(4)).toEqual({value : 10, next : null});
     expect(result.next.value).toEqual(4);
     expect(result.next.next.value).toEqual(10);
     expect(result.next.next.next).toEqual(null);
